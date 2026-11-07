@@ -657,7 +657,7 @@ async function initHomePage() {
   const saved = readSession(HOME_STATE_KEY);
   let restoreScroll = 0;
   if (saved) {
-    if (VIEWS.includes(saved.view)) state.view = saved.view;
+    if (VIEWS.includes(saved.view) && !document.querySelector(".main-nav")?.hidden) state.view = saved.view;
     if (typeof saved.genre === "string" && (!saved.genre || getGenre(saved.genre))) state.genre = saved.genre;
     if (typeof saved.query === "string") state.query = saved.query;
     restoreScroll = Number(saved.scroll) || 0;
